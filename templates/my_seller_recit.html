@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %} Seller Recit{% endblock title %} 
+{% block body %}
+     
+<div class="blogfull">
+     {% for temp in a %}
+     <div  class="blog">
+     <center>
+    <h4>{{temp.title}}</br></h4>
+    <div class="image">
+                   <a href="{{temp.crop.image}}">
+               <img src="{{temp.crop.image}}"class="w-100">
+          </a>
+					
+				</div>
+    <p class="text-center">Details: {{temp.crop.details}}</p>
+	<h5 class="text-center">Price: {{temp.crop.price}}TK</h5>
+    
+    <c/enter>
+    <form action="/my_seller_recit_detail" method ="post" id="SellerRecitSystemform2" > 
+    {% csrf_token %}
+     <button type="Submit" class="fullbtn"name="Seller1" value="{{temp.id}}" form="SellerRecitSystemform2" class="read_more">FuLL</button>
+      </form>
+    </div>
+    {% endfor %}
+    </div>
+
+	</div>
+    {% endblock body %}

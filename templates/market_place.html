@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block marketactive%}active{% endblock marketactive%}
+{% block title %} Market Place{% endblock title %} 
+{% block body %}
+
+
+
+    <a href="/market_place_form"class="btn">Create a new post</a>
+     
+     <div>
+		<h1 class="text-center">Golden Crops Market Place</h1>
+		<hr>
+
+
+		<div class="marketfull">
+     {% for temp in data %}
+     <div  class="blog">
+     <center>
+    <h4>{{temp.title}}</br></h4>
+    <div class="image">
+                   <a href="{{temp.image}}">
+               <img src="{{temp.image}}"class="w-100">
+          </a>
+					
+				</div>
+    
+	<h5 class="text-center">Price: {{temp.price}}TK per {{temp.unit2}}</h5>
+    
+    <c/enter>
+    <form action="/crop_details" method ="post" id="CropSystemform2" > 
+    {% csrf_token %}
+     <button type="Submit" class="fullbtn"name="CropSystem2" value="{{temp.id}}" form="CropSystemform2" class="read_more">Details</button>
+      </form>
+    </div>
+    {% endfor %}
+    </div>
+
+	</div>
+   
+  
+ 
+{% endblock body %}
+

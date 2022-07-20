@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+ {% block profileactive%}active{% endblock profileactive%}
+{% block title %} Profile{% endblock title %} 
+
+{% block body %}
+  
+<div class="header">
+
+</div>
+
+<div class="row">
+  <div class="pleftcolumn">
+    <div class="card">
+      
+<h2 style="text-align:center">User Profile</h2>
+
+<div class="card">
+           <a href="{{user.profile.image}}">
+               <img class="proimg" src="{{user.profile.image}}" alt="John" style="width:100%">
+          </a>
+  <h1>{{user.username}}</h1>
+  <p>Name: {{user.username.name}}</p>
+  <p>Address:{{user.profile.address}}</p>
+  <p>Phone: {{user.profile.phone}}</p>
+   <p>Email: {{user.profile.field_name}}</p>
+  
+      <a href="my_recits">my recits<i class="btn"></i></a></br>  
+    <a href="my_seller_recit">my seller recits<i class="btn"></i></a> </br>  
+    <a href="{%url 'edit_pro' user.profile.id %}" class="btn">Edit Profile</a></br> 
+  <div style="margin: 24px 0;">
+
+    <a href="www.facebook.com"><i class="fa fa-dribbble"></i></a> 
+
+  
+  </div>
+  
+   
+  
+</div>
+    </div>
+    
+  </div>
+   
+  <div class="prightcolumn">
+       <a href="/blog_form" class="btn">Create a new post</a>
+       		<h1 class="text-center">My Blog</h1>
+		<hr>
+   {%for temp in a%}
+    <div class="card">
+      <h2>{{temp.title}}</h2>
+      <h5>{{temp.pub_date}}</h5>
+      <a href="{{temp.image}}">
+      <img class="img" src="{{temp.image}}"alt="5 Terre" style="  display: block;
+               margin-left: auto;
+                  margin-right: auto;
+                    width: auto;">
+          </a>
+   
+      <p>{{temp.post}}</p>
+      <form action="/delete_blog" method ="post" id="Systemform" >
+     {% csrf_token %}
+    <button type="Submit" name="System" value="{{temp}}" form="Systemform" class="btn">Delete</button>
+    </form>
+      <a href="{%url 'edit_blog' temp.id %}" class="btn">Edit Blog</a>
+         <form action="/blog_details" method ="post" id="Systemform2" >
+     {% csrf_token %}
+     
+     <button type="Submit" class="fullbtn"name="System2" value="{{temp.id}}" form="Systemform2" class="read_more">read more</button>
+    </form>
+      
+  {%endfor%}
+
+ <a href="/market_place_form"class="btn">Create a new post</a>
+    <div>
+		<h1 class="text-center">My Product</h1>
+		<hr>
+<div class="blogfull">
+     {% for temp in b %}
+     <div  class="blog">
+     <center>
+    <h4>{{temp.title}}</br></h4>
+    <div class="image">
+               <a href="{{temp.image}}">
+               <img src="{{temp.image}}"class="w-100">
+          </a>
+					
+				</div>
+    <p class="text-center">Details: {{temp.details}}</p>
+	<h5 class="text-center">Price: {{temp.price}}TK</h5>
+ 
+<form action="/delete_product" method ="post" id="Systemform" >
+     {% csrf_token %}
+    <button type="Submit" name="System" value="{{temp}}" form="Systemform" class="btn">Delete</button>
+    </form>
+    <a href="{%url 'edit_crop' temp.id %}" class="btn">Edit Crop</a>
+    <c/enter>
+  
+    </div>
+    {% endfor %}
+    </div>
+
+
+
+{% endblock body %}

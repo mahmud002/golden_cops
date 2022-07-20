@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %} Crop Details{% endblock title %} 
+{% block body %}
+
+
+<div class="header">
+  <h2>Crop Details</h2>
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2>Title: {{temp.title}}</h2>
+      <h5>{{temp.pub_date}}</h5>
+      <a href="{{temp.image}}">
+      <img class="img" src="{{temp.image}}"alt="5 Terre" style="  display: block;
+               margin-left: auto;
+                  margin-right: auto;
+                    width: auto;">
+          </a>
+      <p>Some text..</p>
+      <p>Details: {{temp.details}}</p>
+      <p>Price: {{temp.price}}</p>
+           <form action="/buy" method ="post" id="BuySystemform" >
+     {% csrf_token %}
+     
+     <button type="Submit" class="fullbtn"name="BuySystem" value="{{temp}}" form="BuySystemform" class="read_more">BUY</button>
+    </form>
+    </div>
+    
+  </div>
+  <div class="rightcolumn">
+    <div class="card">
+      <h2>Seller</h2>
+
+      <img class="proimg" src="{{temp2.image}}" alt="John" style="width:100%">
+      <h1>{{temp2.name}}</h1>
+
+           <form action="/profile2" method ="post" id="Systemform" >
+     {% csrf_token %}
+     
+     <button type="Submit" name="System" value="{{temp2.user}}" form="Systemform" class="btn">See More</button>
+     </form>
+
+    </div>
+
+  
+  </div>
+</div>
+
+    {% endblock body %}

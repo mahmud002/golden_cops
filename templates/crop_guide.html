@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block cropactive%}active{% endblock cropactive%}
+{% block title %} Crop Guide{% endblock title %} 
+{% block body %}
+   
+     <div class="cropguidefull">
+     {% for temp in data %}
+     <div  class="blog">
+     <center>
+    <h4>{{temp.title}}</br></h4>
+    <a href="{{temp.image}}">
+               <img class="img" src="{{temp.image}}"alt="5 Terre" style="width:100%">
+          </a>
+    
+    <p>{{temp.post}}</p>
+    <date>{{temp.pub_date}}
+    <c/enter>
+    </div>
+    {% endfor %}
+    </div>
+    {% endblock body %}

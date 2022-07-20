@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block aboutactive%}active{% endblock aboutactive%}
+{% block title %} About Us{% endblock title %} 
+{% block body %}This is body
+
+    {% for temp in data %}
+    <h2>{{temp.name}}</br></h2>
+    <h2>{{temp.std_id }}</h2>
+    {% endfor %}
+
+{% endblock body %}

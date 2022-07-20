@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %} Blog{% endblock title %} 
+{% block blogactive%}active{% endblock blogactive%}
+{% block body %}
+
+     <a href="/blog_form" class="btn">Create a new post</a>
+     <div class="blogfull">
+     {% for temp in data %}
+     <div class="blog">
+     <center>
+     
+           <a href="{{temp.image}}">
+               <img class="img" src="{{temp.image}}"alt="5 Terre" style="width:100%">
+          </a>
+    
+    <p class="title"><b>{{temp.title}}</b></p>
+    <p class="intro">{{temp.intro}}</b></p>
+    <date>{{temp.pub_date}}
+    </center>
+     <form action="/blog_details" method ="post" id="Systemform2" >
+     {% csrf_token %}
+     
+     <button type="Submit" class="fullbtn"name="System2" value="{{temp.id}}" form="Systemform2" class="read_more">read more</button>
+    </form>
+    </div>
+     
+
+    {% endfor %}
+     </div>
+
+
+
+    {% endblock body %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %} Recit{% endblock title %} 
+{% block body %}
+   
+  
+     
+  
+ <div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2>{{temp.crop.title}}</h2>
+      <h5>{{temp.crop.pub_date}}</h5>
+      <a href="{{temp.crop.image}}">
+      <img class="img" src="{{temp.crop.image}}"alt="5 Terre" style="  display: block;
+               margin-left: auto;
+                  margin-right: auto;
+                    width: auto;">
+          </a>
+      <p>Some text..</p>
+      <p>Total Bill : {{total}}</p>
+      <p>Buyer Name : {{temp.username}}</p>
+      <p>Buyer Address : {{temp.username.address}}</p>
+      <p>Product Details : {{temp.crop.details}}</p>
+      <p>Quantity : {{temp.crop.unit}}  {{temp.crop.unit2}}</p>
+      <p>Price : {{temp.crop.price}}</p>
+      <p>Seller Name: {{temp.crop.username}}</p>
+      <p>Seller Address : {{temp.crop.username.address}}</p>
+      <p>Delivery Status : {{temp.d_status}}</p>
+      <p>Payment Status : {{temp.m_status}}</p>
+      
+           <form action="/pro_rec" method ="post" id="PRSystemform" >
+     {% csrf_token %}
+     
+     <button type="Submit" class="fullbtn"name="PRSystem" value="{{temp}}" form="PRSystemform" class="read_more">Recive Delivery</button>
+    </form>
+    </div>
+    
+  </div>
+    
+  
+    {% endblock body %}
+
+
